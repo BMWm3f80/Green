@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %} Logout {% endblock %}
+
+{% block content %}
+  <body class="login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <a href="#" >
+          <b>Log in again ?</b>
+        </a>
+        <a href="{% url "login" %}" >
+          <b>>></b>
+        </a>
+      </div>
+    </div>
+  </body>
+{% endblock %}
