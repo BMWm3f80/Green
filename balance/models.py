@@ -25,6 +25,7 @@ class Module(models.Model):
     name = models.CharField(max_length=128, null=True)
     path = models.CharField(max_length=256, null=True, blank=True)
     icon = models.CharField(max_length=128, null=True, blank=True)
+    box_class = models.CharField(max_length=200, null=True, blank=True)
     active = models.BooleanField(default=True)
 
     def __str__(self):

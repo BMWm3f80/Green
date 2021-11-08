@@ -5,3 +5,4 @@ from django.shortcuts import render
 @login_required
 def modules_view(request):
     print(request.GET.get('app_code'))
+    return render(request, 'modules.html')

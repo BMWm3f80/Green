@@ -1,6 +1,52 @@
 {% extends "home.html" %}
 {% load i18n %}
 {% block title %}Modules{% endblock %}
-{% block content %}
+{% block container %}
     <h1>Modules</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-success">
+            <i class="far fa-envelope"></i>
+          </span>
+          <div class="info-box-content">
+            <span class="info-box-text">Text</span>
+            <span class="info-box-number">Description</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info">
+            <i class="far fa-envelope"></i>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info">
+            <i class="far fa-envelope"></i>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-info">
+            <i class="far fa-envelope"></i>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+{% block js %}
+  {{ block.super }}
+  <script>
+    $(".info-box").hover(
+      function () {
+        $(this).toggleClass("shadow");
+      })
+  </script>
 {% endblock %}
