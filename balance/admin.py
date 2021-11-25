@@ -7,6 +7,11 @@ class ModuleInline(admin.TabularInline):
     extra = 0
 
 
+class PermissionInline(admin.TabularInline):
+    model = Permission
+    extra = 0
+
+
 @admin.register(App)
 class AppAdmin(admin.ModelAdmin):
     inlines = [ModuleInline, ]
@@ -18,20 +23,12 @@ class AppUserAdmin(admin.ModelAdmin):
     pass
 
 
-class PermissionInline(admin.TabularInline):
-    model = Permission
-    extra = 0
+@admin.register(Module)
+class ModuleAdmin(admin.ModelAdmin):
+    inlines = [ PermissionInline, ]
 
 
-@admin.register(Role)
-class RoleAdmin(admin.ModelAdmin):
-    inlines = [PermissionInline, ]
-    pass
 
-
-@admin.register(RoleUser)
-class RoleUserAdmin(admin.ModelAdmin):
-    pass
 
 
 

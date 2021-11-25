@@ -26,33 +26,24 @@ class Module(models.Model):
     path = models.CharField(max_length=256, null=True, blank=True)
     icon = models.CharField(max_length=128, null=True, blank=True)
     box_class = models.CharField(max_length=200, null=True, blank=True)
+    order_numb = models.IntegerField(default=1)
     active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
 
 
-class Role(models.Model):
-    module = models.ForeignKey(Module, null=True, on_delete=models.SET_NULL)
-    code = models.CharField(max_length=10, unique=True)
-    name = models.CharField(max_length=128)
-    active = models.BooleanField(default=True)
+class Module_User(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    module = models.ForeignKey(Module, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.code
-
-
-class RoleUser(models.Model):
-    role = models.ForeignKey(Role, null=True, on_delete=models.SET_NULL)
-    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-
-    def __str__(self):
-        return "{}-{}".format(self.role.code, self.user.username)
+        return "{}-{}".format(self.module, self.user.username)
 
 
 class Permission(models.Model):
-    role = models.ForeignKey(Role, null=True, on_delete=models.SET_NULL)
     code = models.CharField(max_length=10, unique=True)
+    module = models.ForeignKey(Module, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
     active = models.BooleanField(default=True)
 
